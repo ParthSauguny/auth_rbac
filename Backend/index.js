@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use("/user" , user_route);
-app.use("/book" , book_route);
+//app.use("/book" , book_route);
 
 app.get('/' , (req , res) => {
     res.send("hello");
