@@ -1,3 +1,4 @@
+const mongo = require('mongoose');
 const {model , Schema} = require('mongoose');
 
 const bookSchema = new Schema({
@@ -6,9 +7,9 @@ const bookSchema = new Schema({
         required: true,
     },
     owner:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongo.Schema.Types.ObjectId,
+        ref: 'UserSchema',
         required: true,
-        ref: 'UserSchema'
     },
     author: {
         type: String,

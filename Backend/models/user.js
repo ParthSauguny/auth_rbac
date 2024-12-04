@@ -19,7 +19,7 @@ const userSchema = new Schema({
     role: {
         type: String,
         required: true,
-        enum: ['admin' , 'user']
+        enum: ['admin' , 'user' , 'moderator']
     },
     refreshtoken:{
         type:String,
@@ -43,6 +43,7 @@ userSchema.methods.generateAccessToken = function(){
         _id:this._id,
         username:this.username,
         email:this.email,
+        role:this.role
     },
     process.env.ACCESS_TOKEN_SECRET, 
     {

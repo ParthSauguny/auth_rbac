@@ -4,13 +4,14 @@ const user_model = require('../models/user')
 
 router.post("/signup" , async(req , res) => {
     const {username , email , password , role} = req.body;
+    console.log(username , email , password , role);
 
     if (!username || !email || !password || !role) {
         return res.status(400).json({ error: "Please fill all the required fields." });
     }
 
     try {
-        const existingUser = await usermodel.findOne({ $or: [{ username }, { email }] });
+        const existingUser = await user_model.findOne({ $or: [{ username }, { email }] });
 
         if (existingUser) {
             // If the username or email already exists, return a 401 response with a message
@@ -38,7 +39,7 @@ router.route("/login").post(async(req,res) => {
     }
     
     try {
-        const user = await usermodel.findOne({email});
+        const user = await user_model.findOne({email});
         if(!user){
             return res.status(401).json({ error:"Invalid Credentials." });
         }

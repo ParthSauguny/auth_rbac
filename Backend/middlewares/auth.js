@@ -30,6 +30,7 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
+
 const checkRole = (requiredRoles) => (req, res, next) => {
   const { role } = req.user; // User's role from token
   if (!requiredRoles.includes(role)) {
